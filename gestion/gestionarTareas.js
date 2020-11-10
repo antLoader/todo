@@ -31,7 +31,15 @@ let listarTareas = path => {
 };
 
 let actualizarTarea = (path, descripcion, completada) => {
-
+    let tareas = leerTareas(path);
+    let tarea = tareas.find(tarea => tarea.descripcion === descripcion);
+    if (tarea === undefined) return console.log(chalk.cyan('Tarea no encontrada'));
+    tarea.completada = completada;
+    tareas = JSON.stringify(tareas);
+    fs.writeFileSync(path, tareas, err => {
+        if (err) throw err;
+    });
+    return console.log(chalk.cyan('Tarea actualizada'));
 };
 
 

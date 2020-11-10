@@ -9,7 +9,7 @@ const {
 
 let path = './tareas/tareas.json';
 
-switch(argv._[0]){
+switch (argv._[0]) {
     case 'crear':
         crearTarea(path, argv.descripcion);
         break;
