@@ -10,11 +10,14 @@ const {
 
 const path = './tareas/tareas.json';
 
+const success = chalk.cyan.dim;
+const failure = chalk.red.dim;
+
 switch (argv._[0]) {
     case 'crear':
         console.log(crearTarea(path, argv.descripcion)
-            ? chalk.cyan.dim('Tarea creada')
-            : chalk.red.dim('La tarea ya existe en la bd')
+            ? success('Tarea creada')
+            : failure('La tarea ya existe en la bd')
         );
         break;
     case 'listar':
@@ -28,14 +31,14 @@ switch (argv._[0]) {
         break;
     case 'actualizar':
         console.log(actualizarTarea(path, argv.descripcion, argv.completada)
-            ? chalk.cyan.dim('Tarea actualizada')
-            : chalk.red.dim('La tarea no existe en la bd')
+            ? success('Tarea actualizada')
+            : failure('La tarea no existe en la bd')
         );
         break;
     case 'borrar':
         console.log(borrarTarea(path, argv.descripcion)
-            ? chalk.cyan.dim('Tarea borrada')
-            : chalk.red.dim('La tarea no existe en la bd')
+            ? success('Tarea borrada')
+            : failure('La tarea no existe en la bd')
         );
         break;
     default:
