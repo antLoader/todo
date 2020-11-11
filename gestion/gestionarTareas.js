@@ -40,10 +40,9 @@ let actualizarTarea = (path, descripcion, completada) => {
 
 let borrarTarea = (path, descripcion) => {
     let tareas = leerTareas(path);
-    let index = tareas.findIndex(tarea => tarea.descripcion === descripcion);
-    if (index === -1) return false;
-    tareas.splice(index, 1);
-    escribirTareas(path, tareas);
+    let newTareas = tareas.filter(tarea => tarea.descripcion !== descripcion);
+    if (newTareas.length === tareas.length) return false;
+    escribirTareas(path, newTareas);
     return true;
 }
 

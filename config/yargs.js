@@ -5,17 +5,19 @@ const descripcion = {
     type: 'string'
 }
 
+const completada = {
+    alias: 'c',
+    default: false,
+    desc: 'Estado de la tarea'
+}
+
 const opts = {
     crear: {
         descripcion
     },
     actualizar: {
         descripcion,
-        completada: {
-            alias: 'c',
-            default: false,
-            desc: 'Estado de la tarea'
-        }
+        completada
     },
     borrar: {
         descripcion
