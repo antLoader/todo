@@ -3,22 +3,28 @@ const chalk = require('chalk');
 
 const {
     actualizarTarea,
-    listarTareas,
+    leerTareas,
     crearTarea
 } = require('./gestion/gestionarTareas.js');
 
-let path = './tareas/tareas.json';
+const path = './tareas/tareas.json';
 
 switch (argv._[0]) {
     case 'crear':
-        crearTarea(path, argv.descripcion);
+        console.log(crearTarea(path, argv.descripcion) 
+            ? chalk.cyan.dim('Tarea creada') 
+            : chalk.red.dim('La tarea ya existe en la bd')
+        );
         break;
     case 'listar':
-        console.log(listarTareas(path));
+        console.log(leerTareas(path));
         break;
     case 'actualizar':
-        actualizarTarea(path, argv.descripcion, argv.completada);
+        console.log(actualizarTarea(path, argv.descripcion, argv.completada) 
+            ? chalk.cyan.dim('Tarea actualizada') 
+            : chalk.red.dim('La tarea no existe en la bd')
+        );
         break;
     default:
-        console.log(chalk`el comando {black.bold ${argv._[0]}} no se reconoce`);
+        console.log(chalk`el comando {red.dim ${argv._[0]}} no se reconoce`);
 }
