@@ -38,8 +38,18 @@ let actualizarTarea = (path, descripcion, completada) => {
     return true;
 };
 
+let borrarTarea = (path, descripcion) => {
+    let tareas = leerTareas(path);
+    let index = tareas.findIndex(tarea => tarea.descripcion === descripcion);
+    if (index === -1) return false;
+    tareas.splice(index, 1);
+    escribirTareas(path, tareas);
+    return true;
+}
+
 module.exports = {
     leerTareas,
     crearTarea,
-    actualizarTarea
+    actualizarTarea,
+    borrarTarea
 }

@@ -4,7 +4,8 @@ const chalk = require('chalk');
 const {
     actualizarTarea,
     leerTareas,
-    crearTarea
+    crearTarea,
+    borrarTarea
 } = require('./gestion/gestionarTareas.js');
 
 const path = './tareas/tareas.json';
@@ -28,6 +29,12 @@ switch (argv._[0]) {
     case 'actualizar':
         console.log(actualizarTarea(path, argv.descripcion, argv.completada)
             ? chalk.cyan.dim('Tarea actualizada')
+            : chalk.red.dim('La tarea no existe en la bd')
+        );
+        break;
+    case 'borrar':
+        console.log(borrarTarea(path, argv.descripcion)
+            ? chalk.cyan.dim('Tarea borrada')
             : chalk.red.dim('La tarea no existe en la bd')
         );
         break;

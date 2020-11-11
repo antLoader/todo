@@ -16,12 +16,16 @@ const opts = {
             default: false,
             desc: 'Estado de la tarea'
         }
+    },
+    borrar: {
+        descripcion
     }
 }
 
 const argv = require('yargs')
     .command('crear', 'Crea una tarea por hacer', opts.crear)
     .command('listar', 'Muestra una lista de las tareas')
+    .command('borrar', 'Borra una tarea', opts.borrar)
     .command(
         'actualizar',
         'Actualiza el estado de una tarea',
