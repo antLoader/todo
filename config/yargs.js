@@ -23,8 +23,8 @@ const argv = require('yargs')
     .command('crear', 'Crea una tarea por hacer', opts.crear)
     .command('listar', 'Muestra una lista de las tareas')
     .command(
-        'actualizar', 
-        'Actualiza el estado de una tarea', 
+        'actualizar',
+        'Actualiza el estado de una tarea',
         opts.actualizar,
         argv => argv.completada = argv.completada == 'true' ? true : false
     )
